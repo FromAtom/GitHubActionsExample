@@ -11,7 +11,21 @@ jobs:
 
     runs-on: macos-latest
 
+    env:
+      MINT_PATH: mint/lib
+
     steps:
     - uses: actions/checkout@v2
-    - name: Build
+    - name: brew install mint
+      run: brew install mint
+    - name: mint bootstrap
+      run: mint bootstrap
+    # - name: Cache Mint files
+    #   uses: actions/cache@v2
+    #   with:
+    #     path: Mint
+    #     key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+    #     restore-keys: |
+    #       ${{ runner.os }}-carthage-
+    - name: xcodebuild
       run: xcodebuild -sdk iphonesimulator -configuration Debug build
