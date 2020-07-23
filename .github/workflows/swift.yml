@@ -11,8 +11,9 @@ jobs:
 
     runs-on: macos-latest
 
-    # env:
-    #   MINT_PATH: mint/lib
+    env:
+      MINT_PATH: ${{ github.workspace }}/mint/lib
+      # MINT_LINK_PATH: ${{ github.workspace }}/mint/bin
 
     steps:
     - uses: actions/checkout@v2
